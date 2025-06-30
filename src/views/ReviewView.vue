@@ -42,65 +42,6 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="w-full bg-white transition-all duration-500">
-    <!--<div class="container px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
-      <div class="title">
-        <h1 class="text-title">Testimonials</h1>
-      </div>
-
-      <div class="text">
-        <p class="text-content">
-          Explore the whole collection of open-source web components and elements built with the
-          utility classes from Tailwind
-        </p>
-      </div>
-
-      <figure class="w-4/6 content block bg-lime-200 border border-gray-200 rounded-lg shadow-sm">-->
-
-        <!-- Transition Slide
-        <transition name="fade" mode="out-in">
-          <div :key="current">
-            <figcaption class="flex mb-3 items-center justify-center mt-6 space-x-3">
-              <img
-                class="w-6 h-6 image rounded-full"
-                :src="testimonials[current].avatar"
-                :alt="testimonials[current].name"
-              />
-              <div class="flex items-center divide-x-2 divide-gray-500">
-                <div class="pr-3 name font-medium text-gray-900 dark:text-white">
-                  {{ testimonials[current].name }}
-                </div>
-                <div class="pl-3 position text-sm font-light text-gray-500 dark:text-gray-400">
-                  {{ testimonials[current].title }}
-                </div>
-              </div>
-            </figcaption>
-            <blockquote>
-              <p class="text-quote">"{{ testimonials[current].quote }}"</p>
-            </blockquote>
-          </div>
-        </transition> -->
-
-        <!-- Dot Navigation
-        <div class="flex justify-center mt-6 space-x-4">
-          <button
-            v-for="(_, i) in testimonials"
-            :key="i"
-            @click="goTo(i)"
-            :class="[
-              'w-4 h-4 mark-corousel rounded-full transition-all duration-300',
-              current === i ? 'bg-gray-900' : 'bg-gray-300 ',
-            ]"
-          />
-        </div>
-      </figure>
-    </div>-->
-
-
-
-        <!-- end of testimonials -->
-
-  </section class="w-full bg-white transition-all duration-500">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="title2 max-w-3xl mx-auto text-center">
         <h2 class="title-text2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -120,7 +61,7 @@ onBeforeUnmount(() => {
           <div
             v-for="(item, index) in visibleTestimonials"
             :key="`${item.name}-${index}`"
-            class="relative flex flex-col rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10 h-full"
+            class="relative flex flex-col rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10 h-[300px]"
           >
             <!-- Kutipan -->
             <div class="flex-grow">
@@ -167,15 +108,12 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-  <section>
-
-  </section>
 </template>
 
 <style scoped>
 .container {
   margin: auto;
-  height: 500px;
+  height: 600px;
 }
 
 .title {
@@ -272,8 +210,7 @@ onBeforeUnmount(() => {
   color: var(--font-black);
 }
 .row3{
-  /*padding: 0 50px 100px 50px;*/
-  margin-top: 20px;
+  margin: 20px 75px 0 75px;
   padding: 20px;
 }
 .image2{
