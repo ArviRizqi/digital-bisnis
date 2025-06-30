@@ -13,7 +13,7 @@ import IconGithub from '../components/icons/IconGithub.vue'
     >
       <!-- Brand Info -->
       <div class="col-span-1 sm:col-span-2">
-        <h2 class="brand-name text-2xl font-bold text-green-700">AgriVista.</h2>
+        <h2 class="brand-name text-2xl font-bold text-green-700">Jtech.</h2>
         <p class="brand-text mt-2 text-gray-600">
           Our platform is dedicated to helping farmers and agricultural professionals thrive by
           providing access to valuable resources, expert advice, and a supportive community.
