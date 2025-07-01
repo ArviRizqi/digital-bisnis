@@ -149,6 +149,9 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+button:hover {
+  transform: translateY(-5px);
+}
 
 .icon {
   align-items: center;

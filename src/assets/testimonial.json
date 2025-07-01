@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Micheal Gough",
+    "title": "CEO at Google",
+    "quote": "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex dashboard. Perfect choice for your next SaaS application.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+  },
+  {
+    "name": "Sarah Johnson",
+    "title": "CTO at Stripe",
+    "quote": "This UI kit saved me so much time! Everything looks polished and professional. Highly recommended.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sarah-johnson.png"
+  },
+  {
+    "name": "David Lee",
+    "title": "Designer at Airbnb",
+    "quote": "I love how customizable and elegant the components are. Makes frontend dev much more enjoyable!",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/david-lee.png"
+  },
+  {
+    "name": "Emily Carter",
+    "title": "Product Manager at Amazon",
+    "quote": "Using Flowbite streamlined our prototyping process. We were able to iterate faster and deliver better designs.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/emily-carter.png"
+  },
+  {
+    "name": "James Brown",
+    "title": "Lead Developer at Microsoft",
+    "quote": "The design consistency and component flexibility in Flowbite are unmatched. It’s become an essential part of our workflow.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/james-brown.png"
+  },
+  {
+    "name": "Linda Nguyen",
+    "title": "UX Researcher at Netflix",
+    "quote": "Our team values great UX, and Flowbite helps us prototype and test ideas faster than ever.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/linda-nguyen.png"
+  },
+  {
+    "name": "Robert Kim",
+    "title": "Engineering Manager at Meta",
+    "quote": "Flowbite bridges the gap between design and development. It's intuitive and powerful.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-kim.png"
+  },
+  {
+    "name": "Isabella Gomez",
+    "title": "UI Designer at Shopify",
+    "quote": "From typography to grids, everything in Flowbite feels premium and well-thought-out.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/isabella-gomez.png"
+  },
+  {
+    "name": "Thomas Müller",
+    "title": "Frontend Architect at SAP",
+    "quote": "Integrating Flowbite into our existing stack was seamless. The documentation is excellent.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/thomas-muller.png"
+  },
+  {
+    "name": "Aisha Mohammed",
+    "title": "Software Engineer at Atlassian",
+    "quote": "I appreciate how well-structured and modern Flowbite is. It accelerates development without sacrificing quality.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/aisha-mohammed.png"
+  },
+  {
+    "name": "James Brown",
+    "title": "Lead Developer at Microsoft",
+    "quote": "The design consistency and component flexibility in Flowbite are unmatched. It’s become an essential part of our workflow.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/james-brown.png"
+  },
+  {
+    "name": "Linda Nguyen",
+    "title": "UX Researcher at Netflix",
+    "quote": "Our team values great UX, and Flowbite helps us prototype and test ideas faster than ever.",
+    "avatar": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/linda-nguyen.png"
+  }
+]
