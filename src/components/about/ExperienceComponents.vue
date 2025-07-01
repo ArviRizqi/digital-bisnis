@@ -120,7 +120,7 @@ button {
 }
 
 button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px);
 }
 
 /* Tablet: 2 columns */

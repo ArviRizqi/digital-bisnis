@@ -1,45 +1,53 @@
+<template>
+  <div
+    class="container-banner grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-gray-900 text-white"
+  >
+    <!-- Left Gradient Section -->
+    <div
+      class="left-section bg-[url('../../public/img/ai.jpg')] filter brightness-75 h-full w-full bg-cover"
+    ></div>
+    <!-- Right Text Section -->
+    <div
+      class="right-section flex flex-col justify-center items-start p-10 space-y-6 bg-gradient-to-r from-grey-600 via-green-800 to-green-600"
+    >
+      <h2 class="tittle text-4xl font-bold">We’re here to help</h2>
+      <p class="text text-gray-300 leading-relaxed">
+        Let our AI analyze your soil’s condition and recommend the best possible crops for your land
+        based on accurate scientific data.
+      </p>
+
+      <ButtonCTA class="button-icon" />
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
+// No logic needed for static component
 import ButtonCTA from '@/components/button/ButtonCTA.vue'
 </script>
 
-<template>
-  <section
-    class="relative bg-cover bg-center min-h-[700px] flex items-center justify-center"
-    :style="{ backgroundImage: 'url(/img/tryai.jpg)', filter: 'brightness(0.9)' }"
-  >
-    <div class="content">
-      <h1 class="text-content">
-        Let our AI engine analyze your soil’s health and suggest the most suitable crops for your
-        land
-      </h1>
-
-      <ButtonCTA class="button" />
-    </div>
-  </section>
-</template>
-
 <style scoped>
-.hero {
-  position: relative;
-}
-
-.hero img {
+.container-banner {
   width: 100%;
-  object-position: center;
-  filter: brightness(0.9);
+  margin: 0;
+
+  height: 500px;
 }
 
-.text-content {
-  width: 70%;
-  margin: auto;
-  font-size: 4.5rem;
-  line-height: 1.1;
-  font-weight: bold;
-  text-align: center;
-  color: var(--text-white-soft);
+.right-section {
+  padding: 25px 50px 75px 100px;
 }
-
-.button {
-  margin: 3rem auto;
+.tittle {
+  font-weight: 600;
+  font-size: 3rem;
+  color: var(--font-black);
+}
+.text {
+  font-size: 1.25rem;
+  width: 400px;
+}
+.button-icon {
+  width: 200px;
+  margin-top: 50px;
 }
 </style>
