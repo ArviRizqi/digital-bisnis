@@ -7,7 +7,14 @@ const isOpen = ref(false)
 const dropdownOpen = ref(false)
 
 const handleScroll = (): void => {
-  scrolled.value = window.scrollY > 20
+  const logo = document.getElementById('logo') as HTMLImageElement
+  if (window.scrollY > 20) {
+    scrolled.value = true
+    logo.src = '../../../public/j-tech-logo-black.png'
+  } else {
+    scrolled.value = false
+    logo.src = '../../../public/j-tech-logo-color.png'
+  }
 }
 
 const toggleMenu = () => {
@@ -37,10 +44,9 @@ onUnmounted(() => {
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
         <a href="#" class="flex items-center brand-link">
-          <i class="fas fa-rocket text-blue-500 text-2xl mr-2"></i>
           <span :class="['brand-name font-bold', scrolled ? 'brand-name-scroll' : 'text-white']"
-            >BrandName</span
-          >
+            ><img id="logo" src="../../../public/j-tech-logo-black.png" alt="logo image" srcset=""
+          /></span>
         </a>
 
         <!-- Desktop Menu -->

@@ -13,9 +13,7 @@ const testimonials = ref<Testimonial[]>(data)
 const currentSlide = ref(0)
 const itemsPerSlide = 3
 
-const totalSlides = computed(() =>
-  Math.ceil(testimonials.value.length / itemsPerSlide)
-)
+const totalSlides = computed(() => Math.ceil(testimonials.value.length / itemsPerSlide))
 
 const visibleTestimonials = computed(() => {
   const start = currentSlide.value * itemsPerSlide
@@ -42,78 +40,76 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="title2 max-w-3xl mx-auto text-center">
-        <h2 class="title-text2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-          What Our Customers Are Saying
-        </h2>
-      </div>
-      <div class="text">
-        <p class="text-content">
-          Explore the whole collection of open-source web components and elements built with the
-          utility classes from Tailwind
-        </p>
-      </div>
+  <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="title2 max-w-3xl mx-auto text-center">
+      <h2 class="title-text2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+        What Our Customers Are Saying
+      </h2>
+    </div>
+    <div class="text">
+      <p class="text-content">
+        Explore the whole collection of open-source web components and elements built with the
+        utility classes from Tailwind
+      </p>
+    </div>
 
-      <!-- SLIDE TIAP 3 TESTIMONIAL -->
-      <div class="row3 mt-12">
-        <transition-group name="fade" tag="div" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div
-            v-for="(item, index) in visibleTestimonials"
-            :key="`${item.name}-${index}`"
-            class="relative flex flex-col rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10 h-[300px]"
-          >
-            <!-- Kutipan -->
-            <div class="flex-grow">
-              <svg
-                class="h-6 w-6 text-slate-200 mb-4"
-                fill="currentColor"
-                viewBox="0 0 24 27"
-              >
-                <path
-                  d="M6.75 13.5C5.23122 13.5 4.5 12.6719 4.5 11.25V3.75C4.5 2.32812 5.23122 1.5 6.75 1.5H10.5V13.5H6.75ZM13.5 13.5C11.9812 13.5 11.25 12.6719 11.25 11.25V3.75C11.25 2.32812 11.9812 1.5 13.5 1.5H17.25V13.5H13.5Z"
-                />
-              </svg>
-              <p class="text2 text-slate-700 text-base leading-relaxed mb-6 line-clamp-4">
-                "{{ item.quote }}"
-              </p>
-            </div>
-
-            <!-- Identitas -->
-            <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-              <div class="text3 text-left">
-                <p class="text-slate-900 font-medium">{{ item.name }}</p>
-                <p class="text-sm text-slate-500">{{ item.title }}</p>
-              </div>
-              <img
-                :src="item.avatar"
-                :alt="item.name"
-                class="image2 h-14 w-14 rounded-full object-cover border border-slate-200"
+    <!-- SLIDE TIAP 3 TESTIMONIAL -->
+    <div class="row3 mt-12">
+      <transition-group name="fade" tag="div" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="(item, index) in visibleTestimonials"
+          :key="`${item.name}-${index}`"
+          class="relative flex flex-col rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10 h-[400px]"
+        >
+          <!-- Kutipan -->
+          <div class="flex-grow">
+            <svg class="h-6 w-6 text-slate-200 mb-4" fill="currentColor" viewBox="0 0 24 27">
+              <path
+                d="M6.75 13.5C5.23122 13.5 4.5 12.6719 4.5 11.25V3.75C4.5 2.32812 5.23122 1.5 6.75 1.5H10.5V13.5H6.75ZM13.5 13.5C11.9812 13.5 11.25 12.6719 11.25 11.25V3.75C11.25 2.32812 11.9812 1.5 13.5 1.5H17.25V13.5H13.5Z"
               />
-            </div>
+            </svg>
+            <p class="text2 text-slate-700 text-base leading-relaxed mb-6 line-clamp-4">
+              "{{ item.quote }}"
+            </p>
           </div>
-        </transition-group>
 
-        <!-- Dot Navigation -->
-        <div class="button1 flex justify-center mt-8 space-x-2">
-          <button
-            v-for="(_, i) in totalSlides"
-            :key="i"
-            @click="goToSlide(i)"
-            :class="[
-              'w-3 h-3 rounded-full transition-all duration-300',
-              currentSlide === i ? 'bg-slate-800' : 'bg-slate-300',
-            ]"
-          />
+          <!-- Identitas -->
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+            <div class="text3 text-left">
+              <p class="text-slate-900 font-medium">{{ item.name }}</p>
+              <p class="text-sm text-slate-500">{{ item.title }}</p>
+            </div>
+            <img
+              :src="item.avatar"
+              :alt="item.name"
+              class="image2 h-14 w-14 rounded-full object-cover border border-slate-200"
+            />
+          </div>
         </div>
+      </transition-group>
+
+      <!-- Dot Navigation -->
+      <div class="button1 flex justify-center mt-8 space-x-2">
+        <button
+          v-for="(_, i) in totalSlides"
+          :key="i"
+          @click="goToSlide(i)"
+          :class="[
+            'w-3 h-3 rounded-full transition-all duration-300',
+            currentSlide === i ? 'bg-slate-800' : 'bg-slate-300',
+          ]"
+        />
       </div>
     </div>
+  </div>
 </template>
 
 <style scoped>
 .container {
   margin: auto;
-  height: 600px;
+  height: auto;
+  padding: 30px auto;
+  margin-bottom: 30px;
 }
 
 .title {
@@ -166,7 +162,6 @@ onBeforeUnmount(() => {
   height: 50px;
   margin: 0 10px 0 20px;
   margin-bottom: 20px;
-
 }
 .name {
   font-size: 1.5rem;
@@ -198,36 +193,34 @@ onBeforeUnmount(() => {
 
 /*style baru*/
 
-.title2{
+.title2 {
   padding: 0 20px 20px;
   width: 60%;
   text-align: center;
   margin: auto;
 }
-.title-text2{
+.title-text2 {
   font-weight: 600;
   font-size: 2.5rem;
   color: var(--font-black);
 }
-.row3{
+.row3 {
   margin: 20px 75px 0 75px;
   padding: 20px;
 }
-.image2{
+.image2 {
   height: 50px;
   width: 50px;
   margin: 20px 20px;
 }
-.text2{
+.text2 {
   padding: 0px 10px 0px 15px;
   margin-bottom: 20px;
 }
-.text3{
+.text3 {
   padding: 0px 10px 0px 15px;
 }
-.button1{
+.button1 {
   margin-top: 20px;
 }
 </style>
-
-

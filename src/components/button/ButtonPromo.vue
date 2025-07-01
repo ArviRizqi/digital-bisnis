@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <button class="px-4 py-2 font-medium button-promo rounded-sm">Buy Now</button>
+    <button class="px-4 py-2 font-medium button-promo rounded-sm">Get Now</button>
   </div>
 </template>
 

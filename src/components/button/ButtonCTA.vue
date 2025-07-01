@@ -13,7 +13,7 @@ import IconArrow from '../icons/IconArrow.vue'
 
 <style scoped>
 .buttonComponents {
-  background-color: var(--button-color);
+  background-color: transparent;
   display: flex;
   justify-content: left;
   align-items: left;

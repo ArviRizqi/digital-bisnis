@@ -83,7 +83,6 @@ import IconGithub from '../components/icons/IconGithub.vue'
 /* Optional: Load FontAwesome if needed */
 .footer {
   background-color: #f9f9f9;
-  margin-top: 50px;
   padding: 30px 0;
 }
 .footer-content {
