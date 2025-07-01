@@ -10,10 +10,10 @@ const handleScroll = (): void => {
   const logo = document.getElementById('logo') as HTMLImageElement
   if (window.scrollY > 20) {
     scrolled.value = true
-    logo.src = '../../../public/j-tech-logo-black.png'
+    logo.src = '/j-tech-logo-black.png'
   } else {
     scrolled.value = false
-    logo.src = '../../../public/j-tech-logo-color.png'
+    logo.src = '/j-tech-logo-color.png'
   }
 }
 
@@ -45,7 +45,7 @@ onUnmounted(() => {
         <!-- Logo -->
         <a href="#" class="flex items-center brand-link">
           <span :class="['brand-name font-bold', scrolled ? 'brand-name-scroll' : 'text-white']"
-            ><img id="logo" src="../../../public/j-tech-logo-black.png" alt="logo image" srcset=""
+            ><img id="logo" src="/j-tech-logo-black.png" alt="logo image" srcset=""
           /></span>
         </a>
 
