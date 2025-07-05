@@ -4,10 +4,19 @@ import IconArrow from '../icons/IconArrow.vue'
 
 <template>
   <div class="buttonComponents rounded-full">
-    <button class="rounded-full flex">
+    <a
+      href="https://jtech-crop-prediction.streamlit.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full flex"
+    >
       <div class="text w-2/3">Try Now</div>
       <IconArrow class="icon w-1/3" />
-    </button>
+    </a>
+    <!-- <button class="rounded-full flex">
+      <div class="text w-2/3">Try Now</div>
+      <IconArrow class="icon w-1/3" />
+    </button> -->
   </div>
 </template>
 
@@ -23,7 +32,7 @@ import IconArrow from '../icons/IconArrow.vue'
   height: 60px;
 }
 
-.buttonComponents button {
+.buttonComponents a {
   font-family: 'Barlow', sans-serif;
   width: 100%;
   background-color: var(--button-color);
@@ -34,7 +43,7 @@ import IconArrow from '../icons/IconArrow.vue'
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+a:hover {
   background-color: var(--button-color-hover);
   color: var(--text-black);
   transition: background-color 0.3s ease;

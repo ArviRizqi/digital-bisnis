@@ -1,10 +1,52 @@
 <script setup lang="ts">
-import IconArrowup from '../icons/IconArrowup.vue'
 import IconCircle from '../icons/IconCircle.vue'
 import IconChart from '../icons/IconChart.vue'
 import IconEcosystem from '../icons/IconEcosystem.vue'
 import IconSupport from '../icons/IconSupport.vue'
 import IconRain from '../icons/IconRain.vue'
+import ButtonModal from '../button/ButtonModal.vue'
+import Modal from '@/components/modal/ModalView.vue'
+
+import { ref } from 'vue'
+
+// Contoh isi modal dari JSON
+const modalContent = ref({ title: '', image: '', content: '' })
+const modalOpen = ref(false)
+
+function openModal(id: number) {
+  // Ambil konten dari id tertentu, contoh statis:
+  if (id === 1) {
+    modalContent.value = {
+      title: 'Nutrient Scanner for Smart Soil Health',
+      image: '/img/soil.jpg',
+      content:
+        'This feature allows you to quickly access detailed information about the essential nutrients present in your soil. It includes measurements of:Nitrogen (N), which plays a critical role in promoting healthy leaf and stem growth by supporting chlorophyll production. Phosphorus (P), which is essential for strong root development, flowering, and fruiting processes. Potassium (K), which helps regulate plant metabolism, improves disease resistance, and enhances overall crop quality and yield. pH levels, which determine the acidity or alkalinity of your soil, directly affecting the availability of nutrients to plants. With this comprehensive data at your fingertips, you can strategically plan your fertilization programs, avoid nutrient deficiencies or toxicities, and ensure that each crop receives precisely what it needs to grow vigorously. Ultimately, this empowers you to maximize productivity while minimizing wasted inputs and environmental impact.',
+    }
+  } else if (id === 2) {
+    modalContent.value = {
+      title: 'Rain Forecast Powered by AI',
+      image: '/img/rain.jpg',
+      content:
+        'Our system provides highly accurate, location-specific weather forecasts enhanced by artificial intelligence algorithms. By leveraging AI, these predictions incorporate patterns from historical climate data, current atmospheric conditions, and microclimate variations around your farm to deliver tailored insights. This enables you to: Proactively schedule planting dates to ensure seeds germinate under optimal conditions. Time irrigation efficiently, avoiding overwatering when rainfall is imminent. Plan harvest activities to prevent crop damage caused by unexpected storms or heavy rainfall. Overall, this capability helps you reduce operational risks, minimize crop losses, and make confident decisions based on advanced weather intelligence rather than generic forecasts.',
+    }
+  } else if (id === 3) {
+    modalContent.value = {
+      title: 'AI-Powered Crop Recommendation',
+      image: '/img/ai.jpg',
+      content:
+        'Our AI-powered recommendation engine conducts an in-depth analysis of your soil’s nutrient profile, pH balance, texture, and other agronomic factors to determine the best crops for your land. This recommendation system is designed to align with your specific farming goals, whether you prioritize: Maximum yield to achieve the highest possible production output per hectare. Short harvest cycles to generate frequent revenue streams with fast-growing crops. Sustainability to maintain long-term soil health, preserve natural resources, and support environmentally friendly farming practices. By understanding the unique characteristics of your land and matching them with optimal crops, our AI engine empowers you to enhance profitability, maintain soil vitality, and achieve farming objectives efficiently and confidently.',
+    }
+  } else if (id === 4) {
+    modalContent.value = {
+      title: 'Seamless IoT Dashboard',
+      image: '/img/db.jpg',
+      content:
+        'The platform consolidates all critical farming data and recommendations into a single, intuitive dashboard that is accessible on any smartphone or tablet. Whether you are assessing nutrient levels, checking weather forecasts, or reviewing AI-based planting suggestions, everything is organized clearly and designed for ease of use. Even if you have no prior experience with technology platforms, you will find the interface straightforward and easy to navigate, enabling you to: Check soil health reports within seconds. View real-time weather updates and alerts. Access tailored planting, fertilizing, and harvesting recommendations seamlessly. This ensures that every farmer, regardless of their digital literacy level, can leverage smart farming technology to improve productivity and operational efficiency.',
+    }
+  }
+
+  modalOpen.value = true
+}
 </script>
 
 <template>
@@ -19,9 +61,7 @@ import IconRain from '../icons/IconRain.vue'
       <div class="text-container">
         <div class="text-title">
           <IconEcosystem class="icon" />
-          <button>
-            <IconArrowup />
-          </button>
+          <ButtonModal :modalId="1" @open="openModal" />
         </div>
 
         <div class="text-subtitle">Nutrient Scanner for Smart Soil Health</div>
@@ -39,9 +79,7 @@ import IconRain from '../icons/IconRain.vue'
       <div class="text-container">
         <div class="text-title">
           <IconRain class="icon" />
-          <button>
-            <IconArrowup />
-          </button>
+          <ButtonModal :modalId="2" @open="openModal" />
         </div>
 
         <div class="text-subtitle">Rain Forecast Powered by AI</div>
@@ -58,9 +96,7 @@ import IconRain from '../icons/IconRain.vue'
       <div class="text-container">
         <div class="text-title">
           <IconSupport class="icon" />
-          <button>
-            <IconArrowup />
-          </button>
+          <ButtonModal :modalId="3" @open="openModal" />
         </div>
 
         <div class="text-subtitle">AI-Powered Crop Recommendation</div>
@@ -77,9 +113,7 @@ import IconRain from '../icons/IconRain.vue'
       <div class="text-container">
         <div class="text-title">
           <IconChart class="icon" />
-          <button>
-            <IconArrowup />
-          </button>
+          <ButtonModal :modalId="4" @open="openModal" />
         </div>
 
         <div class="text-subtitle">Seamless IoT Dashboard</div>
@@ -91,6 +125,14 @@ import IconRain from '../icons/IconRain.vue'
       </div>
     </div>
   </div>
+
+  <Modal
+    :isOpen="modalOpen"
+    :title="modalContent.title"
+    :image="modalContent.image"
+    :content="modalContent.content"
+    @close="modalOpen = false"
+  />
 </template>
 
 <style scoped>
@@ -141,16 +183,6 @@ import IconRain from '../icons/IconRain.vue'
   font-weight: 400;
   color: var(--text-black-mute);
   padding: 5px 0 10px;
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-button:hover {
-  transform: translateY(-5px);
 }
 
 .icon {

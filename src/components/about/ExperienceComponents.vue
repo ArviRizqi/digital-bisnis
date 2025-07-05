@@ -1,5 +1,33 @@
 <script setup lang="ts">
-import IconArrowup from '../icons/IconArrowup.vue'
+import ButtonModal from '../button/ButtonModal.vue'
+import Modal from '@/components/modal/ModalView.vue'
+
+import { ref } from 'vue'
+
+// Contoh isi modal dari JSON
+const modalContent = ref({ title: '', image: '', content: '' })
+const modalOpen = ref(false)
+
+function openModal(id: number) {
+  // Ambil konten dari id tertentu, contoh statis:
+  if (id === 1) {
+    modalContent.value = {
+      title: 'Over 5 Years of Driving Agricultural Innovation ',
+      image: '/img/community-people-working-together-agriculture-grow-food.jpg',
+      content:
+        'With more than half a decade dedicated to transforming the agricultural landscape, our team has consistently pioneered cutting-edge solutions in precision farming. Drawing upon nearly a decade of experience, we have developed and implemented advanced technologies and data-driven practices that empower farmers to optimize their operations efficiently. Our innovations have not only enabled agricultural producers to achieve yield increases of up to 30% but have also contributed significantly to sustainability efforts by reducing overall water consumption by approximately 25%. Through continuous research, strategic partnerships, and an unwavering commitment to supporting farming communities, we remain at the forefront of shaping a more productive, resilient, and environmentally conscious future for global agriculture.',
+    }
+  } else if (id === 2) {
+    modalContent.value = {
+      title: '80% Customer Satisfaction Rate',
+      image: '/img/senior-woman-with-vegetables.jpg',
+      content:
+        'With a remarkable customer satisfaction rate of 80%, our users continue to place their trust in our solutions and services to support their daily operations. This high level of satisfaction reflects our unwavering commitment to providing innovative, reliable, and user-friendly tools that empower businesses to work more efficiently and achieve sustainable growth. By consistently listening to customer feedback and adapting our offerings to meet their evolving needs, we have built long-lasting relationships rooted in value, excellence, and mutual success.',
+    }
+  }
+
+  modalOpen.value = true
+}
 </script>
 
 <template>
@@ -18,7 +46,7 @@ import IconArrowup from '../icons/IconArrowup.vue'
       <div class="text-container">
         <div class="text-title">
           <h1>5+</h1>
-          <button><IconArrowup /></button>
+          <ButtonModal :modalId="1" @open="openModal" />
         </div>
         <div class="text-subtitle">Years of Agricultural Innovation</div>
         <div class="text-content">
@@ -38,7 +66,7 @@ import IconArrowup from '../icons/IconArrowup.vue'
       <div class="text-container">
         <div class="text-title">
           <h1>80%</h1>
-          <button><IconArrowup /></button>
+          <ButtonModal :modalId="2" @open="openModal" />
         </div>
         <div class="text-subtitle">Customer Satisfaction Rate</div>
         <div class="text-content">
@@ -48,6 +76,14 @@ import IconArrowup from '../icons/IconArrowup.vue'
       </div>
     </div>
   </div>
+
+  <Modal
+    :isOpen="modalOpen"
+    :title="modalContent.title"
+    :image="modalContent.image"
+    :content="modalContent.content"
+    @close="modalOpen = false"
+  />
 </template>
 
 <style scoped>
@@ -110,17 +146,6 @@ import IconArrowup from '../icons/IconArrowup.vue'
   font-size: 1rem;
   line-height: 1.5;
   color: var(--text-black-soft, #555);
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-button:hover {
-  transform: translateY(-5px);
 }
 
 /* Tablet: 2 columns */

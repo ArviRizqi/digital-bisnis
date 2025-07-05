@@ -1,226 +1,216 @@
-<script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import data from '../assets/testimonial.json'
-
-interface Testimonial {
-  name: string
-  title: string
-  quote: string
-  avatar: string
-}
-
-const testimonials = ref<Testimonial[]>(data)
-const currentSlide = ref(0)
-const itemsPerSlide = 3
-
-const totalSlides = computed(() => Math.ceil(testimonials.value.length / itemsPerSlide))
-
-const visibleTestimonials = computed(() => {
-  const start = currentSlide.value * itemsPerSlide
-  return testimonials.value.slice(start, start + itemsPerSlide)
-})
-
-// Tambahkan tipe eksplisit pada parameter index
-const goToSlide = (index: number) => {
-  currentSlide.value = index
-}
-
-// Perbaiki deklarasi interval
-let interval: ReturnType<typeof setInterval>
-
-onMounted(() => {
-  interval = setInterval(() => {
-    currentSlide.value = (currentSlide.value + 1) % totalSlides.value
-  }, 10000)
-})
-
-onBeforeUnmount(() => {
-  clearInterval(interval)
-})
-</script>
-
 <template>
-  <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="title2 max-w-3xl mx-auto text-center">
-      <h2 class="title-text2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-        What Our Customers Are Saying
-      </h2>
-    </div>
-    <div class="text">
-      <p class="text-content">
-        Explore the whole collection of open-source web components and elements built with the
-        utility classes from Tailwind
-      </p>
-    </div>
+  <div class="flex justify-center items-center min-h-screen bg-gray-50 px-4">
+    <div
+      class="container mx-auto bg-white rounded-xl shadow p-6 flex flex-col md:flex-row w-full h-[80vh]"
+    >
+      <!-- Left Image -->
+      <div class="w-1/3 section-1 flex justify-center">
+        <!-- Adjusted padding for better alignment -->
+        <div class="image-testimoni">
+          <img
+            :src="currentTestimonial.image"
+            alt="Customer Photo"
+            class="image rounded-lg object-cover"
+          />
+        </div>
+      </div>
 
-    <!-- SLIDE TIAP 3 TESTIMONIAL -->
-    <div class="row3 mt-12">
-      <transition-group name="fade" tag="div" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div
-          v-for="(item, index) in visibleTestimonials"
-          :key="`${item.name}-${index}`"
-          class="relative flex flex-col rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10 h-[400px]"
-        >
-          <!-- Kutipan -->
-          <div class="flex-grow">
-            <svg class="h-6 w-6 text-slate-200 mb-4" fill="currentColor" viewBox="0 0 24 27">
-              <path
-                d="M6.75 13.5C5.23122 13.5 4.5 12.6719 4.5 11.25V3.75C4.5 2.32812 5.23122 1.5 6.75 1.5H10.5V13.5H6.75ZM13.5 13.5C11.9812 13.5 11.25 12.6719 11.25 11.25V3.75C11.25 2.32812 11.9812 1.5 13.5 1.5H17.25V13.5H13.5Z"
-              />
-            </svg>
-            <p class="text2 text-slate-700 text-base leading-relaxed mb-6 line-clamp-4">
-              "{{ item.quote }}"
-            </p>
+      <!-- Right Content -->
+      <div class="w-2/3 section-2 justify-center">
+        <div class="testimoni-title">
+          <h2 class="title">What our customers are saying</h2>
+          <p class="text-gray-500 font-medium text-xl mb-4">
+            Serving over 50k+ customers every month
+          </p>
+        </div>
+
+        <div class="testimoni-section">
+          <!-- Navigation -->
+          <div class="testi-nav flex items-center mb-4">
+            <!-- Prev Button -->
+            <button
+              @click="prev"
+              class="mr-4 rounded-full border border-blue-200 text-black hover:bg-blue-100 w-10 h-10 flex items-center justify-center"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <!-- Page Indicator -->
+            <span class="text-sm">{{ currentIndex + 1 }} of {{ testimonials.length }}</span>
+
+            <!-- Next Button -->
+            <button
+              @click="next"
+              class="ml-4 rounded-full bg-indigo-600 text-white w-10 h-10 flex items-center justify-center hover:bg-indigo-700"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
 
-          <!-- Identitas -->
-          <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-            <div class="text3 text-left">
-              <p class="text-slate-900 font-medium">{{ item.name }}</p>
-              <p class="text-sm text-slate-500">{{ item.title }}</p>
+          <!-- Testimonial Box -->
+          <div class="bg-gray-100 testimoni rounded-lg p-4">
+            <!-- Stars -->
+            <div class="flex mb-4">
+              <template v-for="i in 5" :key="i">
+                <svg
+                  class="w-5 h-5"
+                  :class="i <= currentTestimonial.rating ? 'text-yellow-500' : 'text-gray-300'"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.564-.955L10 0l2.948 5.955
+                    6.564.955-4.756 4.635 1.122 6.545z"
+                  />
+                </svg>
+              </template>
             </div>
-            <img
-              :src="item.avatar"
-              :alt="item.name"
-              class="image2 h-14 w-14 rounded-full object-cover border border-slate-200"
-            />
+
+            <!-- Content -->
+            <p class="text-gray-700 mb-4">
+              {{ currentTestimonial.content }}
+            </p>
+
+            <!-- Reviewer -->
+            <div class="user-testimoni flex items-center">
+              <p class="font-semibold mr-2">{{ currentTestimonial.name }}</p>
+              <span class="text-sm text-indigo-600">{{ currentTestimonial.position }}</span>
+            </div>
           </div>
         </div>
-      </transition-group>
-
-      <!-- Dot Navigation -->
-      <div class="button1 flex justify-center mt-8 space-x-2">
-        <button
-          v-for="(_, i) in totalSlides"
-          :key="i"
-          @click="goToSlide(i)"
-          :class="[
-            'w-3 h-3 rounded-full transition-all duration-300',
-            currentSlide === i ? 'bg-slate-800' : 'bg-slate-300',
-          ]"
-        />
       </div>
     </div>
   </div>
 </template>
 
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const testimonials = ref([
+  {
+    image: '/img/testimonial1.jpg',
+    rating: 5,
+    content:
+      "As a busy professional, I don't have a lot of time to manage my investments, but this platform has made it possible for me to stay on top of my portfolio and make informed decisions quickly and easily.",
+    name: 'Harsh P.',
+    position: 'Product Designer',
+  },
+  {
+    image: '/img/testimonial2.jpg',
+    rating: 4,
+    content:
+      'This tool saves me hours every week. I can now focus on my clients without worrying about the backend processes.',
+    name: 'Rina S.',
+    position: 'Marketing Manager',
+  },
+  {
+    image: '/img/testimonial3.jpg',
+    rating: 5,
+    content:
+      'Excellent customer service and intuitive design. Highly recommended for professionals looking to streamline their workflow.',
+    name: 'Doni K.',
+    position: 'Photographer',
+  },
+])
+
+const currentIndex = ref(0)
+const currentTestimonial = ref(testimonials.value[currentIndex.value])
+
+function next() {
+  currentIndex.value = (currentIndex.value + 1) % testimonials.value.length
+  currentTestimonial.value = testimonials.value[currentIndex.value]
+}
+
+function prev() {
+  currentIndex.value =
+    (currentIndex.value - 1 + testimonials.value.length) % testimonials.value.length
+  currentTestimonial.value = testimonials.value[currentIndex.value]
+}
+</script>
+
 <style scoped>
-.container {
-  margin: auto;
-  height: auto;
-  padding: 30px auto;
-  margin-bottom: 30px;
+.section-2 {
+  padding: 50px;
 }
-
-.title {
-  margin: 10px 0;
-}
-
-.text-title {
-  font-weight: 600;
-  font-size: 2.5rem;
-  color: var(--font-black);
-}
-
-.text {
-  padding: 0 20px 20px;
-  width: 60%;
-  text-align: center;
-  margin: auto;
-}
-
-.text-content {
-  font-size: 1.6rem;
-  line-height: 1;
-  color: var(--font-black-soft);
-}
-
-.content {
-  padding: 20px;
-  margin: auto;
-  margin-top: 20px;
-}
-
-.tsemicolon-icon {
-  width: 80px;
-  height: 80px;
-  margin: auto;
-}
-
-.text-quote {
-  font-size: 2rem;
-  line-height: 1.1;
-  color: var(--font-black);
-  font-weight: 600;
-  margin-bottom: 60px;
-  height: 100px;
+.image-testimoni {
+  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .image {
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  margin: 0 10px 0 20px;
+  width: 100%;
+  height: 600px;
+}
+
+.testimoni-title {
   margin-bottom: 20px;
-}
-.name {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  color: var(--font-black);
-  font-weight: 600;
-}
-.position {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  color: var(--font-black-soft);
-  font-weight: 400;
+  margin-top: 80px;
 }
 
-.mark-corousel {
-  margin: 10px 5px;
-}
-/* Animasi untuk fadeout */
-.fadeout-enter-active,
-.fadeout-leave-active {
-  transition: all 0.5s ease;
-}
-
-.fadeout-enter-from,
-.fadeout-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/*style baru*/
-
-.title2 {
-  padding: 0 20px 20px;
-  width: 60%;
-  text-align: center;
-  margin: auto;
-}
-.title-text2 {
-  font-weight: 600;
+.title {
   font-size: 2.5rem;
-  color: var(--font-black);
+  font-weight: 700;
+  margin-bottom: 5px;
 }
-.row3 {
-  margin: 20px 75px 0 75px;
-  padding: 20px;
+
+.testimoni-section {
+  width: 90%;
+  height: 400px;
 }
-.image2 {
-  height: 50px;
-  width: 50px;
-  margin: 20px 20px;
-}
-.text2 {
-  padding: 0px 10px 0px 15px;
-  margin-bottom: 20px;
-}
-.text3 {
-  padding: 0px 10px 0px 15px;
-}
-.button1 {
+
+.testimoni {
   margin-top: 20px;
+  width: 100%;
+  padding: 30px;
+}
+
+.testimoni p {
+  font-size: 1.2rem;
+  margin: 15px 0 20px;
+  line-height: 1.2;
+}
+
+.user-testimoni {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.user-testimoni p {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.user-testimoni span {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-left: 20px;
+}
+
+.testi-nav {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.testi-nav span {
+  margin: 0 20px;
+  font-size: 1.2rem;
 }
 </style>

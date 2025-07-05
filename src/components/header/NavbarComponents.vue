@@ -43,7 +43,7 @@ onUnmounted(() => {
     <div class="">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
-        <a href="#" class="flex items-center brand-link">
+        <a href="#home" class="flex items-center brand-link">
           <span :class="['brand-name font-bold', scrolled ? 'brand-name-scroll' : 'text-white']"
             ><img id="logo" src="/j-tech-logo-black.png" alt="logo image" srcset=""
           /></span>
@@ -52,9 +52,9 @@ onUnmounted(() => {
         <!-- Desktop Menu -->
         <div class="desktop-menu">
           <a
-            v-for="item in ['Home', 'Products', 'Services', 'About', 'Contact']"
+            v-for="item in ['Home', 'About', 'Products', 'Reviews', 'Contact']"
             :key="item"
-            href="#"
+            :href="`#${item.toLowerCase()}`"
             :class="['nav-link px-5 py-5', scrolled ? 'nav-link-scroll' : 'text-slate-50']"
             >{{ item }}</a
           >
@@ -74,9 +74,9 @@ onUnmounted(() => {
     <div :class="['mobile-menu', { open: isOpen }]">
       <div class="mobile-menu-links">
         <a
-          v-for="item in ['Home', 'Products', 'Services', 'About', 'Contact']"
+          v-for="item in ['Home', 'About', 'Products', 'Reviews', 'Contact']"
           :key="item"
-          href="#"
+          :href="`#${item.toLowerCase()}`"
           class="mobile-link"
           >{{ item }}</a
         >
