@@ -53,23 +53,67 @@ onBeforeUnmount(() => {
       </p>
     </div>
 
-    <!-- SLIDE TIAP 3 TESTIMONIAL -->
-    <div class="row3 mt-12">
-      <transition-group name="fade" tag="div" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div
-          v-for="(item, index) in visibleTestimonials"
-          :key="`${item.name}-${index}`"
-          class="relative flex flex-col rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10 h-[400px]"
-        >
-          <!-- Kutipan -->
-          <div class="flex-grow">
-            <svg class="h-6 w-6 text-slate-200 mb-4" fill="currentColor" viewBox="0 0 24 27">
-              <path
-                d="M6.75 13.5C5.23122 13.5 4.5 12.6719 4.5 11.25V3.75C4.5 2.32812 5.23122 1.5 6.75 1.5H10.5V13.5H6.75ZM13.5 13.5C11.9812 13.5 11.25 12.6719 11.25 11.25V3.75C11.25 2.32812 11.9812 1.5 13.5 1.5H17.25V13.5H13.5Z"
-              />
-            </svg>
-            <p class="text2 text-slate-700 text-base leading-relaxed mb-6 line-clamp-4">
-              "{{ item.quote }}"
+        <div class="testimoni-section">
+          <!-- Navigation -->
+          <div class="testi-nav flex items-center mb-4">
+            <!-- Prev Button -->
+            <button
+              @click="prev"
+              class="mr-4 rounded-full border border-blue-200 text-black hover:bg-blue-100 w-10 h-10 flex items-center justify-center"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <!-- Page Indicator -->
+            <span class="text-sm">{{ currentIndex + 1 }} of {{ testimonials.length }}</span>
+
+            <!-- Next Button -->
+            <button
+              @click="next"
+              class="ml-4 rounded-full bg-green-600 text-white w-10 h-10 flex items-center justify-center hover:bg-green-700"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Testimonial Box -->
+          <div class="bg-gray-100 testimoni rounded-lg p-4">
+            <!-- Stars -->
+            <div class="flex mb-4">
+              <template v-for="i in 5" :key="i">
+                <svg
+                  class="w-5 h-5"
+                  :class="i <= currentTestimonial.rating ? 'text-yellow-500' : 'text-gray-300'"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.564-.955L10 0l2.948 5.955
+                    6.564.955-4.756 4.635 1.122 6.545z"
+                  />
+                </svg>
+              </template>
+            </div>
+
+            <!-- Content -->
+            <p class="text-gray-700 mb-4">
+              {{ currentTestimonial.content }}
             </p>
           </div>
 
@@ -106,10 +150,26 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .container {
-  margin: auto;
-  height: auto;
-  padding: 30px auto;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
+  height: 700px;
+}
+.section-2 {
+  padding: 50px;
+}
+.image-testimoni {
+  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.image {
+  width: 100%;
+  height: 600px;
+}
+
+.testimoni-title {
+  margin-bottom: 20px;
+  margin-top: 80px;
 }
 
 .title {
