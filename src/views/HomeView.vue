@@ -1,6 +1,7 @@
 <!-- src/views/HomeView.vue -->
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from 'vue'
 import Navbar from '../components/header/NavbarComponents.vue'
 import FooterView from './FooterView.vue'
 
