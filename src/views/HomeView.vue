@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue'
 import Navbar from '../components/header/NavbarComponents.vue'
-import HeaderView from './HeaderView.vue'
-import AboutView from './AboutView.vue'
-import ProductView from './ProductView.vue'
-import ReviewView from './ReviewView.vue'
-import BannerView from './BannerView.vue'
+// import HeaderView from './HeaderView.vue'
+// import AboutView from './AboutView.vue'
+// import ProductView from './ProductView.vue'
+// import ReviewView from './ReviewView.vue'
+// import BannerView from './BannerView.vue'
 import FooterView from './FooterView.vue'
 
 // Lazy load komponen bagian halaman
@@ -62,7 +63,7 @@ const OurteamView = defineAsyncComponent(() => import('./OurteamView.vue'))
     <section id="contact">
       <FooterView />
     </section>
-  </div>
+  </main>
 </template>
 
 <style scoped></style>
