@@ -1,8 +1,27 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { defineEmits, defineProps } from 'vue'
+
+// Props
+const props = defineProps<{
+  modalId: number
+}>()
+
+// Emit
+const emit = defineEmits<{
+  (e: 'open', id: number): void
+}>()
+
+// Handler
+function handleClick() {
+  emit('open', props.modalId)
+}
+</script>
 
 <template>
   <div>
-    <button class="px-4 py-2 font-medium button-promo rounded-sm">Buy Now</button>
+    <button class="px-4 py-2 font-medium button-promo rounded-sm" @click="handleClick">
+      Get Now
+    </button>
   </div>
 </template>
 

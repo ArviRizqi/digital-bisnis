@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ButtonLearn from '../button/ButtonLearn.vue'
+// import ButtonLearn from '../button/ButtonLearn.vue'
 import IconCircle from '../icons/IconCircle.vue'
 </script>
 
@@ -7,7 +7,7 @@ import IconCircle from '../icons/IconCircle.vue'
   <div class="flex w-full text-content">
     <div class="flex tab-judul w-3/12">
       <IconCircle class="left-0 circle" />
-      <h1>Who We Are at Farmora</h1>
+      <h1>Who We Are</h1>
     </div>
 
     <div class="space-y-4 content-tab w-9/12">
@@ -22,7 +22,7 @@ import IconCircle from '../icons/IconCircle.vue'
         </p>
       </div>
 
-      <ButtonLearn />
+      <!-- <ButtonLearn /> -->
     </div>
   </div>
 </template>

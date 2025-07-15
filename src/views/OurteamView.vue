@@ -1,11 +1,13 @@
 <template>
-  <div class="container my-custom-team-container">
-    <div class="max-w-7xl mx-auto px-8 py-4 space-y-16">
+  <div class="justify-center my-custom-team-container items-center h-[900px] bg-gray-50">
+    <div class="container team-container bg-white px-8 py-4 space-y-16 rounded-xl shadow h-[700px]">
       <h2 class="title text font-heading font-bold text-black text-4xl text-center">
         Meet the team
       </h2>
 
-      <div class="card-embuh grid md:grid-cols-3 gap-y-16 gap-x-8 justify-items-center">
+      <div
+        class="card-embuh grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-y-16 gap-x-8 justify-items-center"
+      >
         <div class="flex flex-col items-center text-center space-y-4">
           <img
             src="/public/img/aziz.jpeg"
@@ -73,7 +75,6 @@
 <style scoped>
 .card-embuh {
   margin-top: 100px;
-  margin-left: 200px;
 }
 
 .text-embuh {
@@ -89,41 +90,128 @@
   font-weight: 600;
   font-size: 3rem;
   color: var(--font-black);
-  margin-left: 190px;
 }
 
 .my-custom-team-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 100px;
+}
+
+.team-container {
   width: 80%;
   margin: 0 auto;
-  height: 650px;
-  margin-top: 150px;
+  height: 100%;
+  padding: 50px;
 }
 
 .social-icon-wrapper {
-  /* Mengatur tampilan dasar wrapper */
-  display: flex; /* Untuk memusatkan SVG di dalamnya */
+  display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 48px; /* Sesuaikan dengan ukuran SVG (w-12 = 48px) */
-  height: 48px; /* Sesuaikan dengan ukuran SVG */
-  border-radius: 50%; /* Membuat bentuk bulat */
-
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   transition:
     background-color 0.3s ease,
-    color 0.3s ease; /* Transisi untuk efek halus */
-
-  /* Warna default ikon */
+    color 0.3s ease;
   color: #9ca3af;
 }
 
 .social-icon-wrapper:hover {
-  background-color: #000000; /* Warna latar belakang bulat saat hover (contoh: indigo-500) */
-  color: #ffffff; /* Warna ikon saat hover (contoh: white) */
+  background-color: #000000;
+  color: #ffffff;
 }
 
-/* Pastikan SVG di dalam wrapper ini mewarisi warna dari parent */
 .social-icon-wrapper svg {
   fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .my-custom-team-container {
+    padding: 50px 20px;
+    height: auto;
+  }
+
+  .team-container {
+    width: 90%;
+    padding: 30px;
+    height: auto;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .card-embuh {
+    margin-top: 60px;
+    gap-y: 40px;
+  }
+
+  .text-embuh {
+    font-size: 1.125rem;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-custom-team-container {
+    padding: 30px 15px;
+    height: auto;
+  }
+
+  .team-container {
+    width: 95%;
+    padding: 20px;
+    height: auto;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .card-embuh {
+    margin-top: 40px;
+    gap-y: 30px;
+  }
+
+  .text-embuh {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+
+  .logo-embuh {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .my-custom-team-container {
+    padding: 20px 10px;
+  }
+
+  .team-container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .text-embuh {
+    font-size: 0.95rem;
+  }
+
+  .social-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon-wrapper svg {
+    width: 32px;
+    height: 32px;
+  }
 }
 </style>

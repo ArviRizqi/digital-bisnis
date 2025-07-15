@@ -1,10 +1,10 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen bg-gray-50 px-4">
+  <div class="flex justify-center items-center h-[900px] bg-gray-50 px-4">
     <div
-      class="container mx-auto bg-white rounded-xl shadow p-6 flex flex-col md:flex-row w-full h-[80vh]"
+      class="container mx-auto bg-white rounded-xl shadow p-6 flex flex-col w-full h-[700px] md:flex-row"
     >
-      <!-- Left Image -->
-      <div class="w-1/3 section-1 flex justify-center">
+      <!-- Left Image - Hidden on tablet and mobile -->
+      <div class="w-1/3 section-1 flex justify-center hidden lg:flex">
         <!-- Adjusted padding for better alignment -->
         <div class="image-testimoni">
           <img
@@ -16,7 +16,7 @@
       </div>
 
       <!-- Right Content -->
-      <div class="w-2/3 section-2 justify-center">
+      <div class="w-2/3 section-2 justify-center lg:w-2/3 md:w-full">
         <div class="testimoni-title">
           <h2 class="title">What our customers are saying</h2>
           <p class="text-gray-500 font-medium text-xl mb-4">
@@ -152,6 +152,7 @@ function prev() {
   width: 90%;
   margin-top: 50px;
   margin-bottom: 50px;
+  overflow: hidden;
 }
 
 .image {
@@ -212,5 +213,47 @@ function prev() {
 .testi-nav span {
   margin: 0 20px;
   font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .section-2 {
+    padding: 30px 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .testimoni-title {
+    margin-top: 40px;
+  }
+
+  .testi-nav {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-2 {
+    padding: 20px 50px 20px 50px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .testimoni p {
+    font-size: 1rem;
+  }
+
+  .testimoni-section {
+    width: 100%;
+  }
+
+  .testimoni {
+    padding: 20px;
+  }
 }
 </style>

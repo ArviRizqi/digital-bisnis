@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ButtonLearn from '../button/ButtonLearn.vue'
+// import ButtonLearn from '../button/ButtonLearn.vue'
 import IconCircle from '../icons/IconCircle.vue'
 </script>
 
@@ -31,7 +31,7 @@ import IconCircle from '../icons/IconCircle.vue'
         </ul>
       </div>
 
-      <ButtonLearn />
+      <!-- <ButtonLearn /> -->
     </div>
   </div>
 </template>

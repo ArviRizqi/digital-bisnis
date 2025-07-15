@@ -1,7 +1,6 @@
 <!-- src/views/HomeView.vue -->
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
-import { defineAsyncComponent } from 'vue'
 import Navbar from '../components/header/NavbarComponents.vue'
 import FooterView from './FooterView.vue'
 
@@ -10,7 +9,8 @@ const HeaderView = defineAsyncComponent(() => import('./HeaderView.vue'))
 const AboutView = defineAsyncComponent(() => import('./AboutView.vue'))
 const ProductView = defineAsyncComponent(() => import('./ProductView.vue'))
 const ReviewView = defineAsyncComponent(() => import('./ReviewView.vue'))
-// const BannerView = defineAsyncComponent(() => import('./BannerView.vue'))
+const BannerView = defineAsyncComponent(() => import('./BannerView.vue'))
+const OurteamView = defineAsyncComponent(() => import('./OurteamView.vue'))
 </script>
 
 <template>
@@ -46,11 +46,19 @@ const ReviewView = defineAsyncComponent(() => import('./ReviewView.vue'))
         </Suspense>
       </section>
 
-      <!-- <Suspense>
+      <Suspense>
         <template #default><BannerView /></template>
         <template #fallback><div>Memuat AI Section...</div></template>
-      </Suspense> -->
+      </Suspense>
+
+      <section id="contact">
+        <Suspense>
+          <template #default><OurteamView /></template>
+          <template #fallback><div>Memuat Tim Kami...</div></template>
+        </Suspense>
+      </section>
     </main>
+
     <section id="contact">
       <FooterView />
     </section>

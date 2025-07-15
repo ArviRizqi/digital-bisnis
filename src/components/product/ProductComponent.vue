@@ -1,5 +1,25 @@
 <script setup lang="ts">
 import ButtonPromo from '@/components/button/ButtonPromo.vue'
+import Modal from '@/components/modal/ModalView.vue'
+
+import { ref } from 'vue'
+
+// Contoh isi modal dari JSON
+const modalContent = ref({ title: '', image: '', content: '' })
+const modalOpen = ref(false)
+
+function openModal(id: number) {
+  // Ambil konten dari id tertentu, contoh statis:
+  if (id === 1) {
+    modalContent.value = {
+      title: 'Product Comming Soon',
+      image: '',
+      content: '',
+    }
+  }
+
+  modalOpen.value = true
+}
 </script>
 
 <template>
@@ -37,12 +57,20 @@ import ButtonPromo from '@/components/button/ButtonPromo.vue'
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4">
-            <ButtonPromo />
+            <ButtonPromo :modalId="1" @open="openModal" />
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <Modal
+    :isOpen="modalOpen"
+    :title="modalContent.title"
+    :image="modalContent.image"
+    :content="modalContent.content"
+    @close="modalOpen = false"
+  />
 </template>
 
 <style scoped>

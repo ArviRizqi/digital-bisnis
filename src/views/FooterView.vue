@@ -25,9 +25,10 @@ import IconGithub from '../components/icons/IconGithub.vue'
         <h3 class="col-name mb-2">Navigate</h3>
         <ul class="space-y-1">
           <li><a href="#" class="col-text">Home</a></li>
-          <li><a href="#" class="col-text">Pricing</a></li>
-          <li><a href="#" class="col-text">Blog</a></li>
           <li><a href="#" class="col-text">About</a></li>
+          <li><a href="#" class="col-text">Product</a></li>
+          <li><a href="#" class="col-text">Reviews</a></li>
+          <li><a href="#" class="col-text">Contact</a></li>
         </ul>
       </div>
 
@@ -35,25 +36,29 @@ import IconGithub from '../components/icons/IconGithub.vue'
         <h3 class="col-name mb-2">Support Us</h3>
         <ul class="space-y-1">
           <li><a href="#" class="col-text">FAQ's</a></li>
-          <li><a href="#" class="col-text">Contact Us</a></li>
-          <li><a href="#" class="col-text">Support</a></li>
-          <li><a href="#" class="col-text">Security</a></li>
-          <li><a href="#" class="col-text">Center</a></li>
+          <p class="text-gray-600 col-text">jtech@gmail.com</p>
+          <p class="text-gray-600 col-text">(+62) 850-000-1234</p>
         </ul>
       </div>
 
-      <div>
-        <h3 class="col-name mb-2">Partners</h3>
-        <ul class="space-y-1">
-          <li><a href="#" class="col-text">Our Partners</a></li>
-          <li><a href="#" class="col-text">Subscriber</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="col-name mb-2">Contact US</h3>
-        <p class="text-gray-600 col-text">alma.lawson@example.com</p>
-        <p class="text-gray-600 col-text">(207) 555-0119</p>
+      <div class="col-span-1 sm:col-span-2">
+        <h3 class="col-name mb-2">Subscribe to our newsletter</h3>
+        <p class="text-gray-400 mb-4 text-[1.1rem]">
+          The latest news, articles, and resources, sent to your inbox weekly.
+        </p>
+        <form class="flex">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="input flex-1 rounded-md px-4 py-2 bg-gray-50 border border-gray-500 placeholder-gray-400 text-white focus:outline-none focus:ring-1 focus:ring-blue-200"
+          />
+          <button
+            type="submit"
+            class="button rounded-md bg-[var(--button-color-hover)] px-4 py-2 text-sm font-semibold text-white hover:bg-[var(--button-color)] focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          >
+            Subscribe
+          </button>
+        </form>
         <div class="flex mt-2 space-x-4">
           <IconFacebook class="icon" />
           <IconInstagram class="icon" />
@@ -126,6 +131,10 @@ li {
   padding: 30px 0;
 }
 
+.copyright span {
+  margin: 0 5px;
+}
+
 .copy-text {
   color: var(--text-black-mute);
   font-size: 1.1rem;
@@ -150,5 +159,29 @@ a:hover {
 
 .icon:first-child {
   margin-left: 0;
+}
+
+.input {
+  height: 35px;
+  margin: 10px 0;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.button {
+  width: 100px;
+  height: 35px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  margin: 10px 0;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 15px 20px 30px;
+    width: 100%;
+  }
 }
 </style>
