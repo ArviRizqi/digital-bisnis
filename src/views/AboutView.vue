@@ -237,9 +237,9 @@ const currentTabComponent = computed(() => {
   }
 
   .button {
-    font-size: 12px;
-    padding: 5px 8px;
-    margin: 8px 6px;
+    font-size: 11px;
+    padding: 6px 12px;
+    margin: 5px 3px;
   }
 
   .main-text {
